@@ -1,6 +1,9 @@
 import React from 'react'
 
 const Videos = () => {
+
+  const currentSection = 'Videos'
+
   return (
     <section className='flex flex-col items-center border-2 border-stone-300'>
       <h2 className='mt-6 text-xl md:text-3xl'>Popular Videos</h2>
