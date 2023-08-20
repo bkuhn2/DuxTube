@@ -1,6 +1,28 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addVideo, removeVideo } from '../features/mySavedVideos'
 
 const Thumbnail = ({savedSection, id, uploader, image}) => {
+
+  const dispatch = useDispatch();
+  const allVideos = useSelector((state) => state.allVideos.value)
+  const savedVideos = useSelector((state) => state.mySavedVideos.value)
+
+  const saveVideo = (event) => {
+    if (!savedVideos.find(video => video.id === +event.target.id)) {
+      const updatedSaved = [...savedVideos, allVideos.find(video => video.id === +event.target.id)]
+      dispatch(
+        addVideo(updatedSaved)
+      )
+    }
+  }
+
+  const deleteVideo = (event) => {
+    dispatch(
+      removeVideo(savedVideos.filter(video => video.id !== +event.target.id))
+    )
+  }
+
 
 
   return (
@@ -14,7 +36,9 @@ const Thumbnail = ({savedSection, id, uploader, image}) => {
           <button 
             type='button' 
             className='border-1 border-black px-2 mt-2'
-            id={id}>
+            id={id}
+            onClick={event => deleteVideo(event)}  
+          >
               Remove 🗑️
           </button>
         }
@@ -22,7 +46,8 @@ const Thumbnail = ({savedSection, id, uploader, image}) => {
           <button 
             type='button' 
             className='border-1 border-black px-2 mt-2'
-            id={id}>
+            id={id}
+            onClick={event => saveVideo(event)}>
               Save ➕
           </button>
         } 

@@ -5,10 +5,12 @@ import './index.css'
 import { Provider } from 'react-redux'
 import { configureStore } from '@reduxjs/toolkit'
 import allVideosReducer from './features/allVideos.js'
+import mySavedVideosReducer from './features/mySavedVideos.js'
 
 const store = configureStore({
   reducer: {
-    allVideos: allVideosReducer
+    allVideos: allVideosReducer,
+    mySavedVideos: mySavedVideosReducer,
   }
 });
 
