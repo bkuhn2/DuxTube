@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Thumbnail from './Thumbnail';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { increase } from '../features/savedCounter';
 
 const SavedVideos = () => {
 
   const savedSection = true;
+  const dispatch = useDispatch();
   const savedVideos = useSelector((state) => state.mySavedVideos.value)
   const savedVideosDisplay = savedVideos.length ?
     savedVideos.map((video, index) => {
@@ -20,6 +22,12 @@ const SavedVideos = () => {
     })
     :
     [];
+
+  useEffect(() => {
+    dispatch(
+      increase(savedVideos.length)
+    )
+  }, [savedVideos])
 
   return (
     <section className='flex flex-col items-center border-2 border-stone-300'>
