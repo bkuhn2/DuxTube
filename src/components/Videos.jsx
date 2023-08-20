@@ -7,10 +7,15 @@ const Videos = () => {
   const savedSection = false;
   const allVideos = useSelector((state) => state.allVideos.value);
   const videosDisplay = allVideos.length ? 
-    allVideos.map(video => {
+    allVideos.map((video, index) => {
       return (
-        //NEED VIDEO SPECIFIC DATA: name, title, ID, url, key
-        <Thumbnail savedSection={savedSection}/>
+        <Thumbnail 
+          savedSection={savedSection}
+          id={video.id}
+          uploader={video.user.name}
+          image={video.image}
+          key={index}
+        />
       )
     })
     :
@@ -21,7 +26,7 @@ const Videos = () => {
   return (
     <section className='flex flex-col items-center border-2 border-stone-300'>
       <h2 className='mt-6 text-xl md:text-3xl'>Popular Videos</h2>
-      <div className='border-2 border-red-500 w-5/6 my-10 h-64 md:h-80 flex flex-row items-center overflow-x-auto'>
+      <div className='border-2 border-red-500 w-11/12 my-10 h-max flex flex-row overflow-x-scroll'>
         {!!videosDisplay.length && videosDisplay}
         {!videosDisplay.length && <p className=''>Loading...</p>}
       </div>

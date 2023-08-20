@@ -1,28 +1,58 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { addVideo, removeVideo } from '../features/mySavedVideos'
 
-const Thumbnail = ({savedSection}) => {
+const Thumbnail = ({savedSection, id, uploader, image}) => {
+
+  const dispatch = useDispatch();
+  const allVideos = useSelector((state) => state.allVideos.value)
+  const savedVideos = useSelector((state) => state.mySavedVideos.value)
+
+  const saveVideo = (event) => {
+    if (!savedVideos.find(video => video.id === +event.target.id)) {
+      const updatedSaved = [...savedVideos, allVideos.find(video => video.id === +event.target.id)]
+      dispatch(
+        addVideo(updatedSaved)
+      )
+    }
+  }
+
+  const deleteVideo = (event) => {
+    dispatch(
+      removeVideo(savedVideos.filter(video => video.id !== +event.target.id))
+    )
+  }
+
 
 
   return (
-    <div className='border-2 border-teal-200 h-5/6 p-2 m-4 flex flex-col items-center justify-center'>
-      <img className='hover:scale-105 hover:cursor-pointer'/>
-      <p className='text-center'>title</p>
-      <p className='text-center'>description</p>
-      <p className='text-center'>what other info?</p>
-      {savedSection && 
-        <button 
-          type='button' 
-          className='border-1 border-black px-2 mt-2'>
-            Remove 🗑️
-        </button>
-      }
-      {!savedSection &&
-        <button 
-          type='button' 
-          className='border-1 border-black px-2 mt-2'>
-            Save ➕
-        </button>
-      }
+    <div className='border-2 border-teal-200 p-4 m-2 flex flex-col items-center justify-between min-w-fit'>
+      <img className='hover:scale-105 hover:cursor-pointer mb-6 max-h-28 md:max-h-64 '
+        src={image}
+      />
+      <div className='flex flex-col items-center'>
+        <p className='text-center'>Uploaded by {uploader}</p>
+        {savedSection && 
+          <button 
+            type='button' 
+            className='border-1 border-black px-2 mt-2'
+            id={id}
+            onClick={event => deleteVideo(event)}  
+          >
+              Remove 🗑️
+          </button>
+        }
+        {!savedSection &&
+          <button 
+            type='button' 
+            className='border-1 border-black px-2 mt-2'
+            id={id}
+            onClick={event => saveVideo(event)}>
+              Save ➕
+          </button>
+        } 
+      </div>
+
     </div>
   )
 }
