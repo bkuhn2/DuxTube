@@ -6,6 +6,7 @@ import SavedVideos from './components/SavedVideos'
 import { createClient } from 'pexels';
 import { setAllVideos } from './features/allVideos'
 import { useDispatch } from 'react-redux'
+import PlayerSection from './components/PlayerSection'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
   return (
     <main className='h-screen w-screen'>
       <Header />
+      <PlayerSection />
       <Videos />
       <SavedVideos />
     </main>
