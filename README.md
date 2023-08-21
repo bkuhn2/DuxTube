@@ -1,6 +1,6 @@
 # Dux-Tube
 
-### [Deployed Site]()
+### [Deployed Site](https://duxtube.vercel.app/)
 
 ## Abstract
 Dux-Tube is a React application that displays video thumbnails and has an embdedded viewing screen for users to watch the videos, as well as the ability to save videos in another section. The videos are pulled from an array of the most popular videos on Pexels via the Pexels API.
