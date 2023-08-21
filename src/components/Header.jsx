@@ -12,7 +12,7 @@ const Header = () => {
         <p className='text-2xl text-yellow-500 mb-1 mt-2'>React Redux + Video Exercise</p>
         <a href='https://www.pexels.com/' className='text-base text-lime-300 font-font3 mt-1'>Videos Provided By Pexels</a>
       </div>
-      <p className='mr-4 text-3xl text-teal-300 font-font1'>Saved Videos: {numberOfSaved}</p>
+      <p className='mr-4 text-3xl text-teal-400 font-font4'>Saved Videos: {numberOfSaved}</p>
     </header>
   )
 }
