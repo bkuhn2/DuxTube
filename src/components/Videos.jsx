@@ -14,6 +14,7 @@ const Videos = () => {
           id={video.id}
           uploader={video.user.name}
           image={video.image}
+          link={video.url}
           key={index}
         />
       )
