@@ -18,6 +18,10 @@ const store = configureStore({
   }
 });
 
+const require = (iso) => {
+  return;
+}
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
