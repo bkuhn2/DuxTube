@@ -31,9 +31,9 @@ const SavedVideos = () => {
   }, [savedVideos])
 
   return (
-    <section className='flex flex-col items-center border-2 border-stone-300'>
-      <h2 className='mt-8 text-xl md:text-3xl'>My Saved Videos</h2>
-      <div className='border-2 border-red-500 w-11/12 my-10 h-max flex flex-row  overflow-x-scroll'>
+    <section className='flex flex-col items-center text-stone-300'>
+      <h2 className='mt-10 text-xl md:text-3xl text-yellow-500 font-font1'>My Saved Videos</h2>
+      <div className='border-1 border-stone-600 w-11/12 my-10 h-max flex flex-row overflow-x-scroll p-4 bg-stone-900 [box-shadow:_1px_8px_20px_rgb(0_0_0_/_25%)]'>
         {!!savedVideosDisplay.length && savedVideosDisplay}
         {!savedVideosDisplay.length && <p className='self-center'>Add Videos Here...</p>}
       </div>

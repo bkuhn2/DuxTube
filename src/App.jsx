@@ -22,7 +22,7 @@ function App() {
 
 
   return (
-    <main className='h-screen w-screen'>
+    <main className='font-font3 bg-stone-800 bg-gradient-to-r from-slate-800 to-zinc-800'>
       <Header />
       <PlayerSection />
       <Videos />
