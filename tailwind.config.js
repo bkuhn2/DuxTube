@@ -8,8 +8,10 @@ export default {
       colors: {
       },
       fontFamily: {
-        // 'font1': ['Big Shoulders Text', 'cursive'],
-        // 'font2': ['Fjalla One', 'sans-serif'],
+        'font1': ['Amethysta', 'serif'],
+        'font2': ['Castoro', 'serif'],
+        'font3': ['Heebo', 'sans-serif'],
+        'font4': ['Suez One', 'serif']
       },
       borderWidth: {
         '1': '1px'

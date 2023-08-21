@@ -38,29 +38,30 @@ const Thumbnail = ({savedSection, id, uploader, image, link}) => {
 
 
   return (
-    <div className='border-2 border-teal-200 p-4 m-2 flex flex-col items-center justify-between min-w-fit'>
+    <div className='border-1 border-cyan-800 p-4 flex flex-col items-center justify-between min-w-fit
+      bg-gradient-to-b from-stone-800 to-teal-950 rounded-md m-4 my-6'>
       <img 
-        className='hover:scale-105 hover:cursor-pointer mb-6 max-h-28 md:max-h-64 '
+        className='hover:scale-105 hover:cursor-pointer hover:border-lime-400 hover:border-1 mb-6 max-h-28 md:max-h-64 rounded-md border-2 border-black'
         src={image}
         id={id}
         onClick={event => chooseVideo(event)}
       />
       <div className='flex flex-col items-center'>
-        <a href={link} className='text-center mb-2'>Uploaded by {uploader}</a>
+        <a href={link} className='text-center mb-2 hover:text-red-800'>Uploaded by {uploader}</a>
         {savedSection && 
           <button 
             type='button' 
-            className='border-1 border-black px-2 mt-2'
+            className='border-1 border-stone-900 px-2 p-1 mt-2 bg-red-400 rounded-md text-gray-950 text-sm font-font4'
             id={id}
             onClick={event => deleteVideo(event)}  
           >
-              Remove 🗑️
+              Remove 🚮
           </button>
         }
         {!savedSection &&
           <button 
             type='button' 
-            className='border-1 border-black px-2 mt-2'
+            className='border-1 border-stone-900 px-2 mt-2 bg-teal-600 rounded-md text-gray-950 text-sm font-font4'
             id={id}
             onClick={event => saveVideo(event)}>
               Save ➕
