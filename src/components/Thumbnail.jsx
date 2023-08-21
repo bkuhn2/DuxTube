@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addVideo, removeVideo } from '../features/mySavedVideos'
 import { selectVideo } from '../features/selectedVideo'
 
-const Thumbnail = ({savedSection, id, uploader, image}) => {
+const Thumbnail = ({savedSection, id, uploader, image, link}) => {
 
   const dispatch = useDispatch();
   const allVideos = useSelector((state) => state.allVideos.value)
@@ -28,13 +28,13 @@ const Thumbnail = ({savedSection, id, uploader, image}) => {
     const video = allVideos.find(video => video.id === +event.target.id);
     const payload = {
       url: video.video_files[0].link,
-      user: video.user.name
+      user: video.user.name,
+      videoURL: video.url
     };
     dispatch(
       selectVideo(payload)
     );
   }
-
 
 
   return (
@@ -46,7 +46,7 @@ const Thumbnail = ({savedSection, id, uploader, image}) => {
         onClick={event => chooseVideo(event)}
       />
       <div className='flex flex-col items-center'>
-        <p className='text-center'>Uploaded by {uploader}</p>
+        <a href={link} className='text-center mb-2'>Uploaded by {uploader}</a>
         {savedSection && 
           <button 
             type='button' 

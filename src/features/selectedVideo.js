@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export const selectedVideoSlice = createSlice({
   name: 'selectedVideo',
-  initialState: { value: {url: '', user: ''}},
+  initialState: { value: {url: '', user: '', videoURL: ''}},
   reducers: {
     selectVideo: (state, action) => {
       state.value = action.payload

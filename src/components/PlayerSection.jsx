@@ -11,7 +11,7 @@ const PlayerSection = () => {
       {!selectedVideo.url && 
         <>
           <div className='border-2 border-cyan-400 h-player-h w-player-w flex items-center justify-center'>
-            <p className=''> [  Click On One Of The Videos Below To Watch Here ⏯️  ]</p>
+            <p className=''> [  Click The Thumbnail Of One Of The Videos Below To Watch Here ⏯️  ]</p>
           </div>
           <br />
           <br />
@@ -24,8 +24,9 @@ const PlayerSection = () => {
             playing={true}
             loop={true}
             controls={true}
+            volume={0}
           />
-          <p className='mt-2 mb-6'>Uploaded by {selectedVideo.user}</p>
+          <a href={selectedVideo.videoURL} className='mt-4 mb-6'>Uploaded by {selectedVideo.user}</a>
         </>
       }
     </section>
