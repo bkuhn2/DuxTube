@@ -3,21 +3,31 @@ import './App.css'
 import Header from './components/Header'
 import Videos from './components/Videos'
 import SavedVideos from './components/SavedVideos'
-import { createClient } from 'pexels';
 import { setAllVideos } from './features/allVideos'
 import { useDispatch } from 'react-redux'
 import PlayerSection from './components/PlayerSection'
 
 function App() {
 
-  const client = createClient('563492ad6f917000010000013592270a849047e58b69ae21118f8b70');
   const dispatch = useDispatch();
 
+  const getVideos = () => {
+   return fetch('https://api.pexels.com/videos/popular?per_page=20', {
+    headers: {
+      Authorization: '563492ad6f917000010000013592270a849047e58b69ae21118f8b70'
+    }
+   }).then(res => res.json())
+  }
+
+
   useEffect(() => {
-    client.videos.popular({ per_page: 20 })
-      .then(videos => dispatch(
-          setAllVideos(videos.videos)
-        ));
+  getVideos().then(data => dispatch(
+    setAllVideos(data.videos)
+  ))
+    // client.videos.popular({ per_page: 20 })
+    //   .then(videos => dispatch(
+    //       setAllVideos(videos.videos)
+    //     ));
   }, []);
 
 
